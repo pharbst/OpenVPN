@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  OpenVPN:
+    build: ./
+    image: ovpn:test
+    container_name: OpenVPN-Server
+    restart: unless-stopped
+    ports:
+      - 1194:1194
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    env_file:
+      - ./.env
+    
